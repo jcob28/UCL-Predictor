@@ -1,0 +1,86 @@
+[
+  {
+    "id": "MD1-1",
+    "round": 1,
+    "date": "2025-09-16",
+    "home": "Athletic Club",
+    "away": "Arsenal"
+  },
+  {
+    "id": "MD1-2",
+    "round": 1,
+    "date": "2025-09-16",
+    "home": "PSV Eindhoven",
+    "away": "Union Saint-Gilloise"
+  },
+  {
+    "id": "MD1-3",
+    "round": 1,
+    "date": "2025-09-16",
+    "home": "Juventus",
+    "away": "Borussia Dortmund"
+  },
+  {
+    "id": "MD1-4",
+    "round": 1,
+    "date": "2025-09-16",
+    "home": "Real Madrid",
+    "away": "Marseille"
+  },
+  {
+    "id": "MD1-5",
+    "round": 1,
+    "date": "2025-09-16",
+    "home": "Benfica",
+    "away": "Qarabağ"
+  },
+  {
+    "id": "MD1-6",
+    "round": 1,
+    "date": "2025-09-16",
+    "home": "Tottenham",
+    "away": "Villarreal"
+  },
+  {
+    "id": "MD1-7",
+    "round": 1,
+    "date": "2025-09-17",
+    "home": "Olympiacos",
+    "away": "Pafos"
+  },
+  {
+    "id": "MD1-8",
+    "round": 1,
+    "date": "2025-09-17",
+    "home": "Slavia Praha",
+    "away": "Bodø/Glimt"
+  },
+  {
+    "id": "MD1-9",
+    "round": 1,
+    "date": "2025-09-17",
+    "home": "Ajax",
+    "away": "Inter"
+  },
+  {
+    "id": "MD1-10",
+    "round": 1,
+    "date": "2025-09-17",
+    "home": "Bayern München",
+    "away": "Chelsea"
+  },
+  {
+    "id": "MD1-11",
+    "round": 1,
+    "date": "2025-09-17",
+    "home": "Liverpool",
+    "away": "Atlético de Madrid"
+  },
+  {
+    "id": "MD1-12",
+    "round": 1,
+    "date": "2025-09-17",
+    "home": "Paris Saint-Germain",
+    "away": "Atalanta"
+  }
+]

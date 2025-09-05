@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UCL 2025/26 — League Phase Predictor</title>
+  <meta name="description" content="Predict the UCL 2025/26 league phase (36 teams, 8 matchdays), see the live standings, and build your knockout bracket." />
+  <link rel="icon" href="img/favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="app-header">
+  <h1>UCL 2025/26 — League Phase Predictor</h1>
+  <div class="toolbar" role="group" aria-label="Import and tools">
+    <label class="file-btn" title="Load fixtures.json">
+      <input id="fileInput" type="file" accept="application/json" />
+      Load fixtures.json
+    </label>
+    <select id="teamFilter" aria-label="Filter by club">
+      <option value="">— Filter: club —</option>
+    </select>
+    <button id="shareBtn" title="Copy URL with your current picks">Copy page location</button>
+    <button id="resetBtn" class="danger" title="Clear all picks">Clear bets</button>
+  </div>
+</header>
+
+<main class="layout with-tabs">
+  <nav class="tabs" aria-label="Views">
+    <button class="tab-btn active" data-tab="league" aria-pressed="true">League phase</button>
+    <button class="tab-btn" data-tab="knockout" aria-pressed="false">Knockout</button>
+  </nav>
+
+  <section class="matches tab-panel active" data-tab="league" aria-labelledby="matchesHeading">
+    <div class="panel-header"><h2 id="matchesHeading">Matches</h2></div>
+    <div id="matchesContainer" class="matches-list" aria-live="polite"></div>
+  </section>
+
+  <aside class="standings tab-panel active" data-tab="league" aria-labelledby="standingsHeading">
+    <div class="panel-header"><h2 id="standingsHeading">Standings</h2></div>
+    <table class="table" id="standingsTable">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Club</th>
+        <th>M</th>
+        <th>W</th>
+        <th>D</th>
+        <th>L</th>
+        <th>Pts</th>
+      </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </aside>
+
+  <section class="knockout tab-panel" data-tab="knockout" aria-labelledby="bracketHeading">
+    <div class="panel-header"><h2 id="bracketHeading">Bracket (from your standings)</h2></div>
+    <div id="bracket" class="bracket"></div>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <p>@JL 2025 · v1.0 · 05.09.2025</p>
+</footer>
+
+<script src="app.js"></script>
+<noscript>This app requires JavaScript enabled.</noscript>
+</body>
+</html>

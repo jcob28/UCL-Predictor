@@ -1,0 +1,13 @@
+{
+  "name": "ucl-predictor",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "type": "commonjs",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "scripts": {
+    "build:fixtures": "node build-fixtures.js"
+  }
+}
