@@ -55,7 +55,7 @@ You can easily deploy this project using **GitHub Pages**:
 4. Your app will be available under `https://<username>.github.io/UCL-Predictor/`.
 
 ## 📸 Preview
-![img.png](img.png)
+![img/preview.png](img/preview.png)
 
 ## 📜 License
 MIT License. Feel free to use and modify!
