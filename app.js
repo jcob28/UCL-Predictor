@@ -277,9 +277,13 @@
   function makeId(...parts) { return parts.join('_'); }
 
   function buildKnockoutFromTable(table) {
+    // seeds: TOP 8 po fazie ligowej (1–8)
     const seeds = table.slice(0, 8).map(r => r.team);
+
+    // 9–24: play-offy o wejście do 1/8
     const playoffs = table.slice(8, 24).map(r => r.team);
 
+    // Parowanie play-offów: 9 vs 24, 10 vs 23, ...
     const PO_pairs = [];
     for (let i = 0; i < playoffs.length / 2; i++) {
       const home = playoffs[i];
@@ -287,15 +291,39 @@
       PO_pairs.push({ id: makeId('PO', i + 1), round: 'PO', home, away });
     }
 
+    // Seeds 1–8 są gospodarzami z przypisaniem do zwycięzcy PO_1..PO_8
     const R16_pairs = seeds.map((seedTeam, i) => ({
-      id: makeId('R16', i + 1), round: 'R16',
-      home: seedTeam, awayFrom: makeId('PO', i + 1)
+      id: makeId('R16', i + 1),
+      round: 'R16',
+      home: seedTeam,
+      awayFrom: makeId('PO', i + 1)
     }));
 
-    const QF_pairs = Array.from({ length: 4 }, (_, i) =>
-        ({ id: makeId('QF', i + 1), round: 'QF', fromA: makeId('R16', 2 * i + 1), fromB: makeId('R16', 2 * i + 2) }));
-    const SF_pairs = Array.from({ length: 2 }, (_, i) =>
-        ({ id: makeId('SF', i + 1), round: 'SF', fromA: makeId('QF', 2 * i + 1), fromB: makeId('QF', 2 * i + 2) }));
+    // --- KLUCZOWA ZMIANA UKŁADU DRABINKI ---
+    // Rozstawienie ćwierćfinałów i półfinałów tak, aby #1 i #2 były w innych połówkach,
+    // dzięki czemu mogą spotkać się dopiero w finale.
+    //
+    // QF:
+    //  - QF1: R16_1 vs R16_8   (połowa A)
+    //  - QF2: R16_4 vs R16_5   (połowa A)
+    //  - QF3: R16_2 vs R16_7   (połowa B)
+    //  - QF4: R16_3 vs R16_6   (połowa B)
+    //
+    // SF:
+    //  - SF1: zwycięzca QF1 vs zwycięzca QF2  (połowa A)
+    //  - SF2: zwycięzca QF3 vs zwycięzca QF4  (połowa B)
+    const QF_pairs = [
+      { id: makeId('QF', 1), round: 'QF', fromA: makeId('R16', 1), fromB: makeId('R16', 8) },
+      { id: makeId('QF', 2), round: 'QF', fromA: makeId('R16', 4), fromB: makeId('R16', 5) },
+      { id: makeId('QF', 3), round: 'QF', fromA: makeId('R16', 2), fromB: makeId('R16', 7) },
+      { id: makeId('QF', 4), round: 'QF', fromA: makeId('R16', 3), fromB: makeId('R16', 6) },
+    ];
+
+    const SF_pairs = [
+      { id: makeId('SF', 1), round: 'SF', fromA: makeId('QF', 1), fromB: makeId('QF', 2) }, // połowa A
+      { id: makeId('SF', 2), round: 'SF', fromA: makeId('QF', 3), fromB: makeId('QF', 4) }, // połowa B
+    ];
+
     const F_pair = [{ id: makeId('F', 1), round: 'F', fromA: makeId('SF', 1), fromB: makeId('SF', 2) }];
 
     return { PO_pairs, R16_pairs, QF_pairs, SF_pairs, F_pair };
